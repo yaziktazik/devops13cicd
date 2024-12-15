@@ -32,10 +32,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Insert release date
-        run: 'sed-i "s/release-date: .*$/release-date: s`date +%s`/g" ./server-k8s-manifests/devops-psu.yml'
+        run: 'sed -i "s/release-date: .*$/release-date: s`date +%s`/g" ./server-k8s-manifests/devops-psu.yml'
       - name: Commit manifest
         run: |
-          git config--global user.name 'Release Runner'
-          git config--global user.email 'runner@users.noreply.github.com'
-          git commit-am "Release"
-          git push--force origin master:release
+          git config --global user.name 'Release Runner'
+          git config --global user.email 'runner@users.noreply.github.com'
+          git commit -am "Release"
+          git push --force origin master:release
